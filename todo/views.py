@@ -10,6 +10,9 @@ class TaskListView(ListView):
     model = Task
     context_object_name = "tasks"
 
+    def get_queryset(self):
+        return Task.objects.order_by("is_done", "-created_at")
+
 
 class TaskCreateView(CreateView):
     model = Task
